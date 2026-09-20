@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lokasi Pengambilan — TemuIn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-icon" aria-hidden="true">🧭</span>
+      <span class="logo-text">TemuIn</span>
+    </a>
+    <div class="nav-actions">
+      <button type="button" class="profile-btn" aria-label="Profil pengguna">👤</button>
+    </div>
+  </header>
+
+  <!--
+    Catatan tim: ditampilkan setelah jawaban kuis verifikasi valid
+    (lihat backend/src/controllers/claimController.js). Untuk
+    Progress 2 baru disiapkan kerangka statisnya.
+  -->
+  <main class="page-container" style="max-width: 480px;">
+    <div class="card-panel" style="text-align: center;">
+      <p style="font-size: 40px;">✅</p>
+      <h1 style="margin-bottom: 8px;">Verifikasi Berhasil!</h1>
+      <p class="muted" style="margin-bottom: 20px;">
+        Silakan ambil barangmu di lokasi berikut.
+      </p>
+
+      <div class="card-panel" style="background-color: var(--bg); text-align: left;">
+        <p style="font-size: 12px; font-weight: 700; color: var(--primary);">LOKASI PENGAMBILAN</p>
+        <h3 style="margin-top: 4px;">Pos Satpam — Auditorium</h3>
+        <p class="muted" style="margin-top: 6px;">
+          Jam operasional: 07.00 – 20.00 WIB. Bawa KTM untuk konfirmasi identitas.
+        </p>
+      </div>
+
+      <a href="index.html" class="btn" style="width: 100%; text-align: center; margin-top: 20px;">
+        Kembali ke Beranda
+      </a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="logo-icon" aria-hidden="true">🧭</span> TemuIn
+    </div>
+    <p class="copyright">&copy; 2026 TemuIn. Semua hak dilindungi.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
