@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Lapor Cepat — TemuIn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-icon" aria-hidden="true">🧭</span>
+      <span class="logo-text">TemuIn</span>
+    </a>
+    <div class="nav-actions">
+      <button type="button" class="profile-btn" aria-label="Profil pengguna">👤</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-container">
+      <a href="index.html">&larr; Kembali</a>
+      <h1 style="margin-top: 12px; margin-bottom: 20px;">Formulir Lapor Cepat</h1>
+
+      <div class="card-panel">
+        <div class="form-tabs">
+          <button type="button" class="active" id="tab-menemukan">Menemukan</button>
+          <button type="button" id="tab-kehilangan">Kehilangan</button>
+        </div>
+
+        <form id="form-lapor">
+          <div class="form-group">
+            <label for="nama-barang">Nama Barang *</label>
+            <input type="text" id="nama-barang" placeholder="Misal: Dompet Hitam Kulit" required>
+          </div>
+
+          <div class="form-group">
+            <label for="kategori">Kategori</label>
+            <select id="kategori">
+              <option>Aksesoris</option>
+              <option>Elektronik</option>
+              <option>Dompet</option>
+              <option>Dokumen</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="lokasi-gedung">Lokasi Gedung *</label>
+            <select id="lokasi-gedung" required>
+              <option value="">Pilih Gedung</option>
+              <option>Perpustakaan Pusat</option>
+              <option>Auditorium</option>
+              <option>Kantin Utama</option>
+              <option>Lab Komputer</option>
+            </select>
+          </div>
+
+          <div class="form-group card-panel" style="background-color: var(--bg);">
+            <label>Pengaturan Kuis Verifikasi</label>
+            <p class="muted" style="margin-bottom: 12px;">
+              Buat 1 pertanyaan rahasia yang hanya diketahui pemilik aslinya untuk mencegah klaim palsu.
+            </p>
+            <div class="form-group">
+              <label for="pertanyaan-kuis">Pertanyaan Kuis *</label>
+              <input type="text" id="pertanyaan-kuis" placeholder="Cth: Apa warna dompet bagian dalam?" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="jawaban-benar">Jawaban yang Benar *</label>
+              <input type="text" id="jawaban-benar" placeholder="Cth: Merah" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn" style="width: 100%; text-align: center;">Kirim Laporan</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="logo-icon" aria-hidden="true">🧭</span> TemuIn
+    </div>
+    <p class="copyright">&copy; 2026 TemuIn. Semua hak dilindungi.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/form-validation.js"></script>
+</body>
+</html>

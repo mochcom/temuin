@@ -1,0 +1,66 @@
+/* =========================================================
+   RESPONSIVE — BREAKPOINT 1: TABLET (max-width: 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 20px;
+  }
+
+  .hero-search {
+    padding: 32px 20px 40px;
+  }
+
+  .items-section {
+    padding: 24px 20px;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — BREAKPOINT 2: MOBILE (max-width: 480px)
+   ========================================================= */
+@media (max-width: 480px) {
+  .logo-text {
+    display: none; /* sisakan ikon saja supaya navbar tetap ringkas di layar kecil */
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .btn-accent {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .hero-search h1 {
+    font-size: 22px;
+  }
+
+  .items-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .items-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-container {
+    padding: 20px;
+  }
+}

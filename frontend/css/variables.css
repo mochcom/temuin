@@ -1,0 +1,72 @@
+/* =========================================================
+   RESET
+   ========================================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================================
+   DESIGN SYSTEM (:root) — dari Progress 1 TemuIn
+   ========================================================= */
+:root {
+  /* Warna netral */
+  --bg: #F8F9FA;
+  --surface: #FFFFFF;
+  --text: #1E1E1E;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+
+  /* Warna utama */
+  --primary: #2563EB;      /* Primary Blue - kepercayaan */
+  --primary-dark: #1E4FC4;
+  --accent: #F97316;       /* Action Orange - tombol mendesak */
+
+  /* Warna kategori barang */
+  --cat-elektronik: #3B82F6;
+  --cat-aksesoris: #F97316;
+  --cat-dompet: #10B981;
+  --cat-dokumen: #8B5CF6;
+
+  /* Radius & shadow konsisten */
+  --radius: 12px;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+   BODY & TIPOGRAFI DASAR
+   ========================================================= */
+body {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+h1 { font-size: 24px; font-weight: 700; line-height: 1.2; }
+h2 { font-size: 20px; font-weight: 700; line-height: 1.2; }
+h3 { font-size: 16px; font-weight: 600; line-height: 1.3; }
+p  { font-size: 14px; }
+
+.muted { color: var(--muted); }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

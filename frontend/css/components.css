@@ -1,0 +1,204 @@
+/* =========================================================
+   TOMBOL
+   ========================================================= */
+.btn {
+  display: inline-block;
+  background-color: var(--primary);
+  color: var(--surface);
+  padding: 10px 20px;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--surface);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* =========================================================
+   SEARCH BAR & FILTER DROPDOWN
+   ========================================================= */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.search-icon {
+  font-size: 14px;
+}
+
+.search-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background: transparent;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-bar select {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background-color: var(--surface);
+}
+
+/* =========================================================
+   KARTU BARANG (.item-card)
+   ========================================================= */
+.item-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.item-thumb {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  color: var(--surface);
+}
+
+.item-thumb.cat-elektronik { background-color: var(--cat-elektronik); }
+.item-thumb.cat-aksesoris  { background-color: var(--cat-aksesoris); }
+.item-thumb.cat-dompet     { background-color: var(--cat-dompet); }
+.item-thumb.cat-dokumen    { background-color: var(--cat-dokumen); }
+
+.badge-status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.thumb-label {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.item-body {
+  padding: 16px;
+}
+
+.item-location {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--surface);
+}
+
+.tag-elektronik { background-color: var(--cat-elektronik); }
+.tag-aksesoris  { background-color: var(--cat-aksesoris); }
+.tag-dompet     { background-color: var(--cat-dompet); }
+.tag-dokumen    { background-color: var(--cat-dokumen); }
+
+.time {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* =========================================================
+   FORM (dipakai di lapor.html)
+   ========================================================= */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background-color: var(--surface);
+}
+
+.form-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-tabs button {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--surface);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.form-tabs button.active {
+  background-color: var(--primary);
+  color: var(--surface);
+  border-color: var(--primary);
+}
