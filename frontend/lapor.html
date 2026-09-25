@@ -32,49 +32,67 @@
           <button type="button" id="tab-kehilangan">Kehilangan</button>
         </div>
 
-        <form id="form-lapor">
+        <form id="form-lapor" action="#" method="POST" novalidate>
           <div class="form-group">
             <label for="nama-barang">Nama Barang *</label>
-            <input type="text" id="nama-barang" placeholder="Misal: Dompet Hitam Kulit" required>
+            <input type="text" id="nama-barang" name="namaBarang" placeholder="Misal: Dompet Hitam Kulit" required minlength="3"/>
+          </div>
+
+          <div class="form-group">
+            <label for="email-pelapor">Email Pelapor *</label>
+            <input type="email" id="email-pelapor" name="emailPelapor" placeholder="contoh: user@student.upi.edu" required />
           </div>
 
           <div class="form-group">
             <label for="kategori">Kategori</label>
-            <select id="kategori">
-              <option>Aksesoris</option>
-              <option>Elektronik</option>
-              <option>Dompet</option>
-              <option>Dokumen</option>
+            <select id="kategori" name="kategoriBarang" required>
+              <option value="" disabled selected>Pilih Kategori</option>
+              <option value="Aksesoris">Aksesoris</option>
+              <option value="Elektronik">Elektronik</option>
+              <option value="Dompet">Dompet</option>
+              <option value="Dokumen">Dokumen</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="lokasi-gedung">Lokasi Gedung *</label>
-            <select id="lokasi-gedung" required>
-              <option value="">Pilih Gedung</option>
-              <option>Perpustakaan Pusat</option>
-              <option>Auditorium</option>
-              <option>Kantin Utama</option>
-              <option>Lab Komputer</option>
+            <select id="lokasi-gedung" name="lokasiGedung" required>
+              <option value="" disabled selected>Pilih Gedung</option>
+              <option value="Perpustakaan Pusat">Perpustakaan Pusat</option>
+              <option value="Auditorium">Auditorium</option>
+              <option value="Kantin Utama">Kantin Utama</option>
+              <option value="Lab Komputer">Lab Komputer</option>
             </select>
           </div>
 
-          <div class="form-group card-panel" style="background-color: var(--bg);">
+          <div class="form-group">
+            <label for="deskripsi-barang">Deskripsi Tambahan *</label>
+            <textarea 
+              id="deskripsi-barang" 
+              name="deskripsiBarang" 
+              rows="3" 
+              placeholder="Jelaskan ciri khusus atau kondisi fisik barang..." 
+              required 
+              minlength="10"
+            ></textarea>
+          </div>
+
+          <div class="form-group card-panel" id="panel-kuis" style="background-color: var(--bg);">
             <label>Pengaturan Kuis Verifikasi</label>
             <p class="muted" style="margin-bottom: 12px;">
-              Buat 1 pertanyaan rahasia yang hanya diketahui pemilik aslinya untuk mencegah klaim palsu.
+              Buat satu pertanyaan rahasia yang hanya diketahui pemilik aslinya untuk mencegah klaim palsu.
             </p>
             <div class="form-group">
               <label for="pertanyaan-kuis">Pertanyaan Kuis *</label>
-              <input type="text" id="pertanyaan-kuis" placeholder="Cth: Apa warna dompet bagian dalam?" required>
+              <input type="text" id="pertanyaan-kuis" name="pertanyaanKuis" placeholder="Cth: Apa warna dompet bagian dalam?" required minlength="5"/>
             </div>
             <div class="form-group" style="margin-bottom: 0;">
               <label for="jawaban-benar">Jawaban yang Benar *</label>
-              <input type="text" id="jawaban-benar" placeholder="Cth: Merah" required>
+              <input type="text" id="jawaban-benar" name="jawabanBenar" placeholder="Cth: Merah" required/>
             </div>
           </div>
 
-          <button type="submit" class="btn" style="width: 100%; text-align: center;">Kirim Laporan</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Kirim Laporan</button>
         </form>
       </div>
     </section>
