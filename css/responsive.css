@@ -65,51 +65,100 @@
   }
 }
 
+.navbar {
+  position: relative;
+}
+
 @media (max-width: 768px) {
+  /* Tampilkan tombol hamburger di layar mobile */
   .hamburger-btn {
-    display: block !important; /* Memastikan tombol muncul */
+    display: flex;
   }
 
+  /* Kotak Pop-up Dropdown Mobile */
   .nav-actions {
+    display: none; /* Tersembunyi secara default */
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: var(--primary);
+    top: calc(100% + 8px); /* Tepat di bawah navbar/hamburger */
+    right: 16px;          /* Posisikan rata kanan di bawah ikon X/hamburger */
+    background-color: #ffffff;
+    border-radius: 16px;  /* Sisi tumpul (rounded corners) */
+    padding: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Bayangan lembut */
+    border: 1px solid #e2e8f0;
     flex-direction: column;
-    padding: 16px 32px;
     gap: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    /* Smooth Transition (Sembunyi) */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    width: 180px;
+    z-index: 1000;
   }
 
-  /* State Aktif (Tampil Dropdown) */
+  /* Tampilkan kotak dropdown saat kelas 'active' diaktifkan via JS */
   .nav-actions.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    display: flex !important;
   }
 
-  /* --- ANIMASI 'X' PASTI JADI --- */
-  /* Garis 1 (Atas) ke Tengah lalu Putar 45 Derajat */
-  .hamburger-btn.active .bar:nth-child(1) {
-    top: 8.5px;
-    transform: rotate(45deg);
+  /* Penyesuaian tombol di dalam kotak menu */
+  .nav-actions .btn {
+    width: 100%;
+    text-align: center;
+    border-radius: 10px; /* Sudut tumpul untuk tombol di dalam menu */
+    padding: 10px 16px;
   }
 
-  /* Garis 2 (Tengah) Transparan */
-  .hamburger-btn.active .bar:nth-child(2) {
-    opacity: 0;
+  /* Styling khusus tombol Profil agar konsisten */
+  .profile-btn {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    font-weight: 600;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+  }
+}
+
+/* --- Tampilan Mobile (Layar <= 768px) --- */
+@media (max-width: 768px) {
+  .profile-btn .profile-icon {
+    display: none; /* Sembunyikan emoji 👤 di mobile */
   }
 
-  /* Garis 3 (Bawah) ke Tengah lalu Putar -45 Derajat */
-  .hamburger-btn.active .bar:nth-child(3) {
-    top: 8.5px;
-    transform: rotate(-45deg);
+  .profile-btn .profile-text {
+    display: inline; /* Tampilkan tulisan 'Profil' di mobile */
+  }
+
+  /* Penyesuaian tampilan kotak dropdown mobile */
+  .nav-actions {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 16px;
+    background-color: #ffffff;
+    border-radius: 16px; /* Sisi tumpul */
+    padding: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e2e8f0;
+    flex-direction: column;
+    gap: 12px;
+    width: 180px;
+    z-index: 1000;
+  }
+
+  .nav-actions.active {
+    display: flex !important;
+  }
+
+  .nav-actions .btn {
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px 16px;
+  }
+
+  .profile-btn {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    font-weight: 600;
+    border: none;
+    text-decoration: none;
   }
 }

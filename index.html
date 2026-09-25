@@ -8,10 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script src="./js/script.js" defer></script>
 </head>
 <body>
-
   <!-- ===== NAVBAR ===== -->
   <header class="navbar">
     <a href="index.html" class="logo">
@@ -19,19 +17,24 @@
       <span class="logo-text">TemuIn</span>
     </a>
 
-    <!-- Tombol Hamburger untuk \ -->
+    <!-- Tombol Hamburger -->
     <button type="button" class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Navigation">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
 
-    <div class="nav-actions">
+    <!-- Wadah Menu Mobile & Desktop -->
+    <div class="nav-actions" id="nav-actions">
       <a href="lapor.html" class="btn btn-accent">+ Lapor</a>
-      <button type="button" class="profile-btn" aria-label="Profil pengguna">👤</button>
+      
+      <!-- Tombol Profil dengan Dua Tag Span -->
+      <a href="#" class="btn btn-outline profile-btn" aria-label="Profil pengguna">
+        <span class="profile-icon">👤</span>
+        <span class="profile-text">Profil</span>
+      </a>
     </div>
   </header>
-
   <main>
 
     <!-- ===== HERO / SEARCH ===== -->
@@ -232,6 +235,8 @@
     <p class="copyright">&copy; 2026 TemuIn. Semua hak dilindungi.</p>
   </footer>
 
+  <script src="js/main.js"></script>
+  <script src="js/script.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
