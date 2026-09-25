@@ -87,6 +87,13 @@
   box-shadow: var(--shadow-card);
 }
 
+/* Kontainer Kartu Barang
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+} */
+
 .item-thumb {
   position: relative;
   display: flex;

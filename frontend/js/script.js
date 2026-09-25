@@ -51,3 +51,64 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// =========================================================
+// P3-04: Dynamic Counter & Search Filter
+// =========================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("search-barang");
+  const itemsCounter = document.getElementById("items-count");
+  const itemCards = document.querySelectorAll(".item-card");
+
+  // Mencegah form reload saat menekan Enter pada input pencarian
+  if (searchInput) {
+    const searchForm = searchInput.closest("form");
+    if (searchForm) {
+      searchForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+    }
+  }
+
+  // Fungsi memperbarui angka counter barang
+  const updateItemsCount = () => {
+    let visibleCount = 0;
+    itemCards.forEach((card) => {
+      if (card.style.display !== "none") {
+        visibleCount++;
+      }
+    });
+
+    if (itemsCounter) {
+      itemsCounter.innerText = visibleCount;
+    }
+  };
+
+  // Hitungan awal saat pertama kali dimuat
+  if (itemsCounter && itemCards.length > 0) {
+    updateItemsCount();
+  }
+
+  // Event Input Real-Time
+  if (searchInput && itemCards.length > 0) {
+    searchInput.addEventListener("input", (e) => {
+      const keyword = e.target.value.toLowerCase().trim();
+
+      itemCards.forEach((card) => {
+        // Mengambil seluruh teks di dalam card agar pasti kecocokannya
+        const cardContent = card.textContent.toLowerCase();
+
+        if (cardContent.includes(keyword)) {
+          card.style.display = ""; // Tampilkan kembali kartu
+        } else {
+          card.style.display = "none"; // Sembunyikan kartu
+        }
+      });
+
+      // Update angka counter
+      updateItemsCount();
+      console.log(`[P3-04] Keyword: "${keyword}" | Kartu Tampil: ${itemsCounter ? itemsCounter.innerText : 0}`);
+    });
+  }
+});
