@@ -26,4 +26,53 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.warn("Elemen #hamburger-btn atau #nav-actions tidak ditemukan di halaman ini.");
   }
+
+  const searchInput = document.getElementById("search-barang");
+  const itemsCounter = document.getElementById("items-count");
+  const itemCards = document.querySelectorAll(".item-card");
+
+  // 1. Mencegah Form Search Reload Halaman
+  if (searchInput) {
+    const searchForm = searchInput.closest("form");
+    if (searchForm) {
+      searchForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+    }
+  }
+
+  // 2. Fungsi Memperbarui Jumlah Barang yang Tampil
+  const updateItemsCount = () => {
+    let visibleCount = 0;
+    itemCards.forEach((card) => {
+      if (card.style.display !== "none") {
+        visibleCount++;
+      }
+    });
+
+    if (itemsCounter) {
+      itemsCounter.textContent = `${visibleCount} barang`;
+    }
+  };
+
+  // 3. Event Listener Pencarian Real-Time
+  if (searchInput && itemCards.length > 0) {
+    searchInput.addEventListener("input", (e) => {
+      const keyword = e.target.value.toLowerCase().trim();
+
+      itemCards.forEach((card) => {
+        // Ambil teks judul barang atau teks di dalam kartu
+        const cardText = card.textContent.toLowerCase();
+
+        if (cardText.includes(keyword)) {
+          card.style.display = ""; // Tampilkan kartu jika cocok
+        } else {
+          card.style.display = "none"; // Sembunyikan kartu jika tidak cocok
+        }
+      });
+
+      // Update angka pada counter
+      updateItemsCount();
+    });
+  }
 });
