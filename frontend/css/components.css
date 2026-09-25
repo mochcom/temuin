@@ -203,6 +203,40 @@
   border-color: var(--primary);
 }
 
+/* Posisi relatif pada navbar agar menu dropdown menggantung pas di bawahnya */
+.navbar {
+  position: relative;
+}
+
+/* Styling Tombol Hamburger (Dasar) */
+.hamburger-btn {
+  display: none; /* Default hidden di desktop */
+  position: relative;
+  width: 26px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+}
+
+/* Ketiga garis ditumpuk relatif dengan transisi */
+.hamburger-btn .bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--surface);
+  border-radius: 2px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+/* Posisi Awal 3 Garis */
+.hamburger-btn .bar:nth-child(1) { top: 0px; }
+.hamburger-btn .bar:nth-child(2) { top: 8.5px; }
+.hamburger-btn .bar:nth-child(3) { top: 17px; }
+
 /* Styling State Error Validasi Form */
 .form-group input.is-invalid,
 .form-group select.is-invalid,

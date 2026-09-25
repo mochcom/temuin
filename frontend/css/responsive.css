@@ -64,3 +64,52 @@
     padding: 20px;
   }
 }
+
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: block !important; /* Memastikan tombol muncul */
+  }
+
+  .nav-actions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--primary);
+    flex-direction: column;
+    padding: 16px 32px;
+    gap: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* Smooth Transition (Sembunyi) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+
+  /* State Aktif (Tampil Dropdown) */
+  .nav-actions.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* --- ANIMASI 'X' PASTI JADI --- */
+  /* Garis 1 (Atas) ke Tengah lalu Putar 45 Derajat */
+  .hamburger-btn.active .bar:nth-child(1) {
+    top: 8.5px;
+    transform: rotate(45deg);
+  }
+
+  /* Garis 2 (Tengah) Transparan */
+  .hamburger-btn.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  /* Garis 3 (Bawah) ke Tengah lalu Putar -45 Derajat */
+  .hamburger-btn.active .bar:nth-child(3) {
+    top: 8.5px;
+    transform: rotate(-45deg);
+  }
+}

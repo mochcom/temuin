@@ -31,3 +31,23 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("5. Form Lapor - lapor.html (getElementById):", reportForm);
   }
 });
+
+// =========================================================
+// Responsive Hamburger Menu Toggle
+// =========================================================
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const navActions = document.getElementById("nav-actions");
+
+  if (hamburgerBtn && navActions) {
+    hamburgerBtn.addEventListener("click", () => {
+      // Toggle class 'active' pada tombol & menu
+      hamburgerBtn.classList.toggle("active");
+      navActions.classList.toggle("active");
+
+      // Cetak status di Console DevTools
+      const isOpen = navActions.classList.contains("active");
+      console.log(`[P3-03] Status Menu Mobile: ${isOpen ? "Terbuka" : "Tertutup"}`);
+    });
+  }
+});
