@@ -258,3 +258,41 @@
   margin-top: 4px;
   display: block;
 }
+
+/* =========================================================
+   P3-06: Visual Feedback Form (:valid & :invalid)
+   ========================================================= */
+
+/* Variabel Warna Status Validasi (Sesuaikan dengan Design System TemuIn) */
+:root {
+  --color-success: #28a745;
+  --color-success-bg: #f8fff9;
+  --color-error: #dc3545;
+  --color-error-bg: #fff8f8;
+}
+
+/* 1. State :focus & :invalid — Hanya aktif jika input sudah disentuh/diisi */
+.form-group input:not(:placeholder-shown):invalid,
+.form-group textarea:not(:placeholder-shown):invalid,
+.form-group select:invalid:focus {
+  border-color: var(--color-error) !important;
+  background-color: var(--color-error-bg);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+/* 2. State :valid — Aktif saat input terisi dengan nilai yang sah */
+.form-group input:not(:placeholder-shown):valid,
+.form-group textarea:not(:placeholder-shown):valid,
+.form-group select:valid {
+  border-color: var(--color-success) !important;
+  background-color: var(--color-success-bg);
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15);
+}
+
+/* Transisi halus saat warna border/background berubah */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
