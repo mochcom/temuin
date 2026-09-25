@@ -8,18 +8,11 @@
 // POST /api/report dan penanganan respons.
 // =============================================================
 
-// =============================================================
-// P3-07: Pengambilalihan Validasi JS Manual (form-validation.js)
-// =============================================================
-
-// =============================================================
-// P3-07: Validasi Form JS Manual (Penyesuaian Mandatory Field)
-// =============================================================
-
 document.addEventListener("DOMContentLoaded", () => {
   const formLapor = document.getElementById("form-lapor");
   if (!formLapor) return;
 
+  // Helper 1: Tampilkan Pesan Error di Bawah Input Spesifik
   const tampilkanError = (inputId, pesan) => {
     const inputElem = document.getElementById(inputId);
     if (!inputElem) return;
@@ -31,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!errorElem) {
       errorElem = document.createElement("small");
       errorElem.className = "pesan-error";
-      errorElem.style.color = "#dc3545";
+      errorElem.style.color = "var(--color-error, #dc3545)";
       errorElem.style.fontSize = "0.85rem";
       errorElem.style.marginTop = "4px";
       errorElem.style.display = "block";
@@ -42,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inputElem.classList.add("is-invalid");
   };
 
+  // Helper 2: Hapus Pesan Error
   const hapusError = (inputId) => {
     const inputElem = document.getElementById(inputId);
     if (!inputElem) return;
@@ -56,112 +50,132 @@ document.addEventListener("DOMContentLoaded", () => {
     inputElem.classList.remove("is-invalid");
   };
 
-  // Bersihkan error secara real-time saat pengguna melakukan koreksi
+  // Helper 3: Tampilkan Pesan Sukses UI Banner
+  const tampilkanPesanSuksesUI = () => {
+    let alertSukses = document.getElementById("alert-sukses-lapor");
+    if (!alertSukses) {
+      alertSukses = document.createElement("div");
+      alertSukses.id = "alert-sukses-lapor";
+      alertSukses.style.backgroundColor = "#d4edda";
+      alertSukses.style.color = "#155724";
+      alertSukses.style.border = "1px solid #c3e6cb";
+      alertSukses.style.padding = "12px 16px";
+      alertSukses.style.borderRadius = "8px";
+      alertSukses.style.marginBottom = "20px";
+      alertSukses.style.fontWeight = "bold";
+      alertSukses.style.textAlign = "center";
+      
+      // Sisipkan pesan sukses di atas form
+      formLapor.parentNode.insertBefore(alertSukses, formLapor);
+    }
+
+    alertSukses.innerText = "Laporan berhasil dikirim! Terima kasih telah berkontribusi.";
+    alertSukses.style.display = "block";
+
+    // Otomatis hilangkan banner sukses setelah 5 detik
+    setTimeout(() => {
+      alertSukses.style.display = "none";
+    }, 5000);
+  };
+
+  // Bersihkan error secara real-time saat ada perubahan masukan
   const allInputs = formLapor.querySelectorAll("input, select, textarea");
   allInputs.forEach((input) => {
     input.addEventListener("input", () => hapusError(input.id));
     input.addEventListener("change", () => hapusError(input.id));
   });
 
+  // Handle Form Submission
   formLapor.addEventListener("submit", (event) => {
-    event.preventDefault();
+    event.preventDefault(); // [P3-08] Mencegah reload halaman
     let isValid = true;
 
-    // 1. Validasi Nama Barang (Wajib, Min 3 Karakter)
+    // -------------------------------------------------------------
+    // Aturan 1: Mandatory Field Check / trim()
+    // -------------------------------------------------------------
     const namaBarang = document.getElementById("nama-barang");
-    if (namaBarang) {
-      if (!namaBarang.value.trim()) {
-        tampilkanError("nama-barang", "Nama barang wajib diisi.");
-        isValid = false;
-      } else if (namaBarang.value.trim().length < 3) {
-        tampilkanError("nama-barang", "Nama barang minimal 3 karakter.");
-        isValid = false;
-      } else {
-        hapusError("nama-barang");
-      }
+    const namaValue = namaBarang ? namaBarang.value.trim() : "";
+
+    if (!namaValue) {
+      tampilkanError("nama-barang", "Nama barang wajib diisi.");
+      isValid = false;
+    } else if (namaValue.length < 3) {
+      // -----------------------------------------------------------
+      // Aturan 2: Minimum Length Check (minlength)
+      // -----------------------------------------------------------
+      tampilkanError("nama-barang", "Nama barang minimal 3 karakter.");
+      isValid = false;
+    } else {
+      hapusError("nama-barang");
     }
 
-    // 2. Validasi Email Pelapor (Wajib, Format Email)
+    // -------------------------------------------------------------
+    // Aturan 3: Format Email Valid via RegEx
+    // -------------------------------------------------------------
     const emailPelapor = document.getElementById("email-pelapor");
-    if (emailPelapor) {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPelapor.value.trim()) {
-        tampilkanError("email-pelapor", "Email pelapor wajib diisi.");
-        isValid = false;
-      } else if (!emailPattern.test(emailPelapor.value.trim())) {
-        tampilkanError("email-pelapor", "Format email tidak valid (contoh: user@student.upi.edu).");
-        isValid = false;
-      } else {
-        hapusError("email-pelapor");
-      }
+    const emailValue = emailPelapor ? emailPelapor.value.trim() : "";
+    const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailValue) {
+      tampilkanError("email-pelapor", "Email pelapor wajib diisi.");
+      isValid = false;
+    } else if (!emailRegEx.test(emailValue)) {
+      tampilkanError("email-pelapor", "Format email tidak valid (contoh: user@student.upi.edu).");
+      isValid = false;
+    } else {
+      hapusError("email-pelapor");
     }
 
-    // 3. Validasi Kategori (Wajib)
+    // Validasi Dropdown (Kategori & Lokasi)
     const kategori = document.getElementById("kategori");
-    if (kategori) {
-      if (!kategori.value) {
-        tampilkanError("kategori", "Silakan pilih kategori barang.");
-        isValid = false;
-      } else {
-        hapusError("kategori");
-      }
+    if (kategori && !kategori.value) {
+      tampilkanError("kategori", "Silakan pilih kategori barang.");
+      isValid = false;
+    } else if (kategori) {
+      hapusError("kategori");
     }
 
-    // 4. Validasi Lokasi Gedung (Wajib)
     const lokasiGedung = document.getElementById("lokasi-gedung");
-    if (lokasiGedung) {
-      if (!lokasiGedung.value) {
-        tampilkanError("lokasi-gedung", "Silakan pilih lokasi gedung.");
-        isValid = false;
-      } else {
-        hapusError("lokasi-gedung");
-      }
+    if (lokasiGedung && !lokasiGedung.value) {
+      tampilkanError("lokasi-gedung", "Silakan pilih lokasi gedung.");
+      isValid = false;
+    } else if (lokasiGedung) {
+      hapusError("lokasi-gedung");
     }
 
-    // 5. Validasi Deskripsi Tambahan (OPSIONAL - Hanya jika diisi, min 10 karakter)
-    const deskripsi = document.getElementById("deskripsi-barang");
-    if (deskripsi && deskripsi.value.trim() !== "") {
-      if (deskripsi.value.trim().length < 10) {
-        tampilkanError("deskripsi-barang", "Jika diisi, deskripsi minimal 10 karakter.");
-        isValid = false;
-      } else {
-        hapusError("deskripsi-barang");
-      }
-    } else if (deskripsi) {
-      hapusError("deskripsi-barang");
-    }
-
-    // 6. Validasi Kuis Verifikasi (WAJIB - Hanya jika tab Menemukan aktif)
+    // -------------------------------------------------------------
+    // Aturan 4: Match Kuis Verifikasi (Khusus Tab Menemukan)
+    // -------------------------------------------------------------
     const inputPertanyaan = document.getElementById("pertanyaan-kuis");
     const panelKuis = inputPertanyaan ? inputPertanyaan.closest(".card-panel") : null;
     const isKuisVisible = panelKuis && panelKuis.style.display !== "none";
 
     if (isKuisVisible) {
-      const pertanyaanKuis = document.getElementById("pertanyaan-kuis");
-      if (pertanyaanKuis) {
-        if (!pertanyaanKuis.value.trim()) {
-          tampilkanError("pertanyaan-kuis", "Pertanyaan kuis wajib diisi.");
-          isValid = false;
-        } else {
-          hapusError("pertanyaan-kuis");
-        }
+      const pertanyaan = inputPertanyaan ? inputPertanyaan.value.trim() : "";
+      const jawaban = document.getElementById("jawaban-benar") ? document.getElementById("jawaban-benar").value.trim() : "";
+
+      if (!pertanyaan) {
+        tampilkanError("pertanyaan-kuis", "Pertanyaan kuis wajib diisi.");
+        isValid = false;
+      } else if (pertanyaan.length < 5) {
+        tampilkanError("pertanyaan-kuis", "Pertanyaan kuis minimal 5 karakter.");
+        isValid = false;
+      } else {
+        hapusError("pertanyaan-kuis");
       }
 
-      const jawabanBenar = document.getElementById("jawaban-benar");
-      if (jawabanBenar) {
-        if (!jawabanBenar.value.trim()) {
-          tampilkanError("jawaban-benar", "Jawaban benar wajib diisi.");
-          isValid = false;
-        } else {
-          hapusError("jawaban-benar");
-        }
+      if (!jawaban) {
+        tampilkanError("jawaban-benar", "Jawaban benar wajib diisi.");
+        isValid = false;
+      } else {
+        hapusError("jawaban-benar");
       }
     }
 
-    // Hasil Eksekusi Form
+    // Jika seluruh validasi lolos
     if (isValid) {
-      alert("Laporan berhasil dikirim!");
-      formLapor.reset();
+      tampilkanPesanSuksesUI(); // Tampilkan UI Sukses tanpa reload
+      formLapor.reset();        // [P3-08] Reset seluruh isi form
     }
   });
 });
