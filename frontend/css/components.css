@@ -202,3 +202,18 @@
   color: var(--surface);
   border-color: var(--primary);
 }
+
+/* Styling State Error Validasi Form */
+.form-group input.is-invalid,
+.form-group select.is-invalid,
+.form-group textarea.is-invalid {
+  border-color: #EF4444;
+  background-color: #FEF2F2;
+}
+
+.error-text {
+  color: #EF4444;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}

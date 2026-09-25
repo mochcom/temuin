@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
+  z-index: 1000;
 }
 
 .modal-box {
@@ -30,4 +31,18 @@
   font-size: 18px;
   cursor: pointer;
   color: var(--muted);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:focus-visible,
+.modal-close:focus-visible {
+  outline: 2px solid var(--primary-dark);
+  outline-offset: 2px;
+}
+
+.modal-overlay.hidden {
+  display: none;
 }
